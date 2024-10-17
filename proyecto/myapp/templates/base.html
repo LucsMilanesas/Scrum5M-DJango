@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scrum5</title>
+
+    <script src="https://kit.fontawesome.com/84b1008c05.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'css/principal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+</head>
+<body>
+
+    <!--Header - menu-->
+    <header>
+
+        <div class="header-content">
+
+            <div class="logo">
+                <img src="{% static 'img/scrum-removebg-preview.png' %}" alt="">
+            </div>
+
+            <div class="menu" id="show-menu">
+
+                <nav>
+                    <ul>
+                        <li class="menu-selected"><a href="{% static 'blog.html' %}" class="text-menu-selected"></a>
+                             <i class="fas fa-home"></i> Inicio</a></li>
+                        <li><a href="productos/"> <i class="fab fa-youtube"> </i>Productos</a></li> 
+                        <li><a href="nosotros/"> <i class="fas fa-file-alt"></i>Nosotros</a></li>
+                        <li><a href="contacto/"> <i class="fas fa-headset"></i> Contacto</a></li>
+                    </ul>
+                </nav>
+
+            </div>
+
+            <div id="ctn-icon-search">
+                <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
+            </div>
+
+        </div>
+
+        <div id="icon-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+
+    </header>
+
+    <div id="ctn-bars-search">
+        <input type="text" id="inputSearch" placeholder="¿Qué deseas buscar?">
+    </div>
+
+    <div id="cover-ctn-search"></div>
+
+    <!--Portada-->
+    <div class="container-all" id="move-content">
+        <div class="blog-container-cover">
+            <div class="container-info-cover">
+                <h1>¡Tu tienda de confianza!</h1>
+                <p>La fuerza no proviene de lo que puedes hacer, sino de superar lo que creías que no podías..</p>
+            </div>
+        </div>
+    
+        <div class="container-post">
+            <input type="radio" id="REMERA" name="categories" value="REMERA" checked>
+            <input type="radio" id="CAMISA" name="categories" value="CAMISA">
+            <input type="radio" id="CAMPERA" name="categories" value="CAMPERA">
+            <input type="radio" id="PANTALON" name="categories" value="PANTALON">
+            <input type="radio" id="MEDIAS" name="categories" value="MEDIAS">
+            <input type="radio" id="TAZAS" name="categories" value="TAZAS">
+            <input type="radio" id="PELOTA" name="categories" value="PELOTA">
+    
+            <div class="container-category">
+                <label for="REMERA">REMERA</label>
+                <label for="CAMISA">CAMISA</label>
+                <label for="CAMPERA">CAMPERA</label>
+                <label for="PANTALON">PANTALON</label>
+                <label for="MEDIAS">MEDIAS</label>
+                <label for="TAZAS">TAZAS</label>
+                <label for="PELOTA">PELOTA</label>
+            </div>
+            <div class="row">
+                {% if Productos %}
+                    {% for items in Productos %}
+                        <div class="col-lg-4">
+                            <img class="thumbnail" src="{{ items.imagen.url }}">
+                            <div class="box-element product">
+                                <h6><strong>{{ items.nombre }}</strong></h6>
+                                <hr>
+                                <h6>{{ items.descripcion }}</h6>
+                                <button class="btn btn-outline-secondary add-btn">Add to Cart</button>
+                                <a class="btn btn-outline-success" href="#">View</a>
+                                <h4 style="display: inline-block; float: right"><strong>${{ items.precio }}</strong></h4>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No hay productos disponibles.</p>
+                {% endif %}
+            </div>
+            
+        <div class="container-footer">	
+            <footer>
+                <div class="logo-footer">
+                    <img src="{% static 'img/pelota.png' %}" alt="">
+                </div>
+    
+                <div class="redes-footer">
+                    <a href="#"><i class="fab fa-facebook-f icon-redes-footer"></i></a>
+                    <a href="#"><i class="fab fa-google-plus-g icon-redes-footer"></i></a>
+                    <a href="#"><i class="fab fa-instagram icon-redes-footer"></i></a>
+                </div>
+                <hr>
+                <h4>© Hecho solamente por Josesito - Todos los Derechos Reservados</h4>
+            </footer>
+        </div>
+    </div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
